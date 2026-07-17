@@ -1,0 +1,104 @@
+This guide was made using Winlator Ludashi 3.1 and Fighting Is Magic Aurora 1.14.x.x.
+Written by Excylis
+
+This guide will not cover how to create a Box container within Winlator. A simple, step-by-step guide can be found within [this video](https://www.youtube.com/watch?v=yQU5nYm1UPk&t=2992s). The setup and configuration outlined within are compatible with this guide.
+
+Firstly, download the Fighting Is Magic Aurora setup (latest version) and place it somewhere on your device, such as in a dedicated Winlator folder. Open your container and run the installer, directing it towards a folder of your choosing. Do not create a shortcut at this point. The launcher will not work, so configuration must be done manually.
+
+Navigate to the folder in which you installed the game. Firstly, you must enable and configure the new renderer. Rename 'ddraw.dll' to 'ddrawOLD.dll'. Your installation folder will contain another ddraw dll file, which may be called 'ddraw1.dll' or 'ddraw2.dll'. In any case, rename this file to 'ddraw.dll'. This enables the new renderer.
+
+To configure the new renderer, you must edit ddraw.ini, or create it if no such file exists. This file may initially contain a lot of bloat, as it's intended to be modified via the launcher, which does not function within Winlator. You must edit the file manually to contain only these lines.
+
+			[ddraw]
+			windowed=false
+			fullscreen=true
+			toggle_borderless=true
+			toggle_upscaled=true
+			maintas=true
+			vsync=false
+			adjmouse=false
+			devmode=false
+			renderer=auto
+			shader=Shaders\crt\crt-lottes-fast-no-warp-bilinear.glsl
+			d3d9_filter=2
+			maxfps=0
+			boxing=false
+			maxfps=0
+			border=false
+			savesettings=1
+			keytogglefullscreen=0x0D
+			keytogglemaximize=0x22
+			keyunlockcursor1=0x09
+			keyunlockcursor2=0xA3
+			keyscreenshot=0x2C
+			maxgameticks=0
+			noactivateapp=false
+			resolutions=0
+			minfps=0
+			singlecpu=true
+			nonexclusive=true
+
+Next, you must configure or create Aurora.ini. Once again, replace the contents of the file. Controller mappings can be customised here under the Playerx JOY values, but you can do so later within Winlator itself. By default, movement is done with the stick. For a standard gamepad, look [here](https://learn.microsoft.com/en-us/windows/win32/xinput/directinput-and-xusb-devices) for the HID Usage Name, and reduce the button's number by 1. This will give you the correct value to enter into the configuration file. For instance, the ini outlined below maps the Player 1 A, B, C and D inputs to X, Y, B and A on a standard gamepad.
+
+			[GamePlay]
+			Editor.TestPlay.Player0.cpu=0
+			Editor.TestPlay.Player1.cpu=1
+			Editor.TestPlay.GameSpeed=8
+			Editor.TestPlay.HitJudge=0
+			Editor.TestPlay.GameInformation=0
+			Editor.TestPlay.StageNb=0
+			Editor.TestPlay.JoyStick=1
+			Editor.TestPlay.time=0
+			Editor.TestPlay.VSSinglePlay=3
+			Editor.TestPlay.VSTeamPlay=3
+			GameWindowSize_x=640
+			GameWindowSize_y=480
+			GameScreenMode=1
+			Editor.TestPlay.exit=0
+			Editor.TestPlay.VSMode=0
+			Player1 KEY UP=84
+			Player1 KEY RI=70
+			Player1 KEY LF=66
+			Player1 KEY DW=72
+			Player1 KEY AA=65
+			Player1 KEY BB=83
+			Player1 KEY CC=68
+			Player1 KEY DD=81
+			Player1 KEY EE=87
+			Player1 KEY FF=69
+			Player1 KEY PAUSE=27
+			Player1 JOY AA=2
+			Player1 JOY BB=3
+			Player1 JOY CC=1
+			Player1 JOY DD=0
+			Player1 JOY EE=4
+			Player1 JOY FF=5
+			Player1 JOY PAUSE=7
+			Player2 KEY UP=104
+			Player2 KEY RI=100
+			Player2 KEY LF=98
+			Player2 KEY DW=102
+			Player2 KEY AA=74
+			Player2 KEY BB=75
+			Player2 KEY CC=76
+			Player2 KEY DD=73
+			Player2 KEY EE=79
+			Player2 KEY FF=80
+			Player2 KEY PAUSE=27
+			Player2 JOY AA=0
+			Player2 JOY BB=1
+			Player2 JOY CC=2
+			Player2 JOY DD=3
+			Player2 JOY EE=4
+			Player2 JOY FF=5
+			Player2 JOY PAUSE=9
+			GameWindowPoint_x=0
+			GameWindowPoint_y=0
+
+Create a shortcut for Aurora.exe, and close your container.
+
+Navigate to the shortcuts section of Winlator, and you should now see Aurora displayed. Long press (in grid view) or tap the three vertical dots (in list view) and open settings. Scroll down and switch to the advanced tab. Select 'Performance' as your Box64 Preset and 'Aggressive' as your Startup Selection. You may select an input profile here. You must select Enable DInput for Games In Wine.
+
+At this stage, the game is ready to play. Upon opening the Aurora shortcut, it should display in a 4:3 aspect ratio with the default CRT filter. Controller input should be working with the analogue stick, face buttons and bumpers. You may wish to change the mappings - this is best done with a Winlator input profile, customised to your liking and applied within the shortcut's settings.
+
+As a final note, if you wish to export the shortcut to a frontend, such as Emulation Station, ensure that you've set the desired directory within Winlator's settings, under Shortcut Export Path. You may now navigate back to the Aurora shortcut and select 'export'.
